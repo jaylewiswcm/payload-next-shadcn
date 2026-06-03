@@ -117,7 +117,7 @@ export const Scooters: CollectionConfig = {
         {
           name: 'names',
           type: 'group', // required
-          interfaceName: 'Name Variations', // optional
+          interfaceName: 'NameVariations', // optional
           fields: [
             {
               type: 'text', 
@@ -265,7 +265,7 @@ export const Scooters: CollectionConfig = {
             {
             name: 'maxSpeedGroup',
             type: 'group',
-            interfaceName: 'Max Speed',
+            interfaceName: 'MaxSpeed',
             fields: [
               {
                 type: 'row',
@@ -310,7 +310,7 @@ export const Scooters: CollectionConfig = {
             {
             name: 'maxRangeGroup',
             type: 'group',
-            interfaceName: 'Max Range',
+            interfaceName: 'MaxRange',
             fields: [
               {
                 type: 'row',
@@ -355,7 +355,7 @@ export const Scooters: CollectionConfig = {
             {
             name: 'maxUserWeightGroup',
             type: 'group',
-            interfaceName: 'Max User Weight',
+            interfaceName: 'MaxUserWeight',
             required: true,
             fields: [
               {
@@ -391,7 +391,7 @@ export const Scooters: CollectionConfig = {
             {
             name: 'scooterWghtGroup',
             type: 'group',
-            interfaceName: 'Scooter Weight',
+            interfaceName: 'ScooterWeight',
             fields: [
               {
                 type: 'row',

@@ -7,7 +7,7 @@ export const fetchHeader = async () => {
   const data = await payload.findGlobal({
     slug: 'header', // required
     depth: 2,
-    fallbackLocale: false,
+    // fallbackLocale: false,
     overrideAccess: false,
   })
   const header = data
@@ -21,7 +21,7 @@ export const fetchFooter = async () => {
   const data = await payload.findGlobal({
     slug: 'footer', // required
     depth: 2,
-    fallbackLocale: false,
+    // fallbackLocale: false,
     overrideAccess: false,
   })
 

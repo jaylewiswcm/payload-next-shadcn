@@ -3,7 +3,7 @@ import { Block } from 'payload'
 
 export const ProductHeroBlock: Block = {
   slug: 'ProductHero', // required
-  interfaceName: 'HeroBlock', // optional
+  interfaceName: 'ProductHeroBlock', // optional
   fields: [
     // required
     {

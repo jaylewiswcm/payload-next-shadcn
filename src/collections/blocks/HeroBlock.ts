@@ -3,7 +3,7 @@ import { Block } from 'payload'
 export const HeroBlock: Block = {
   slug: 'Hero', // required
   interfaceName: 'HeroBlock', // optional
-  fields: [
+  fields: [ 
     // required
     {
       name: 'heroHeading', // rename this to heading

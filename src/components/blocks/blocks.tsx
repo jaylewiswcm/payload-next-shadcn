@@ -4,7 +4,7 @@ Render all blocks components from payload
 
 import React, { Fragment } from 'react'
 import { Page, Scooter } from '@/payload-types'
-import Hero from './hero'
+// import Hero from './hero'
 import Cta from './cta'
 import Faq from './faq' 
 import Features from './features'

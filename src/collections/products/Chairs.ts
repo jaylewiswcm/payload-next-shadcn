@@ -96,7 +96,7 @@ export const Chairs: CollectionConfig = {
         {
           name: 'names',
           type: 'group', // required
-          interfaceName: 'Name Variations', // optional
+          interfaceName: 'NameVariations', // optional
           fields: [
             {
               type: 'text', 

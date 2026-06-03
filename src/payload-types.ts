@@ -261,34 +261,23 @@ export interface Page {
  * via the `definition` "HeroBlock".
  */
 export interface HeroBlock {
-  heroContent?: {
-    heading?: string | null;
-    body?: string | null;
-    list?:
-      | {
-          listItem?: string | null;
-          id?: string | null;
-        }[]
-      | null;
-    buttons?:
-      | {
-          link?: {
-            linkType?: ('internal' | 'custom') | null;
-            newTab?: ('default' | 'newTab') | null;
-            linkLabel?: string | null;
-            page?: (number | null) | Page;
-            url?: string | null;
-          };
-          id?: string | null;
-        }[]
-      | null;
-  };
-  heroImages?: {
-    images?: (number | Media)[] | null;
-  };
+  heroHeading?: string | null;
+  heroText?: string | null;
+  heroImage?: (number | Media)[] | null;
+  heroButtons?: Buttons;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'ProductHero';
+  blockType: 'Hero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Buttons".
+ */
+export interface Buttons {
+  primaryLabel?: string | null;
+  primaryLink?: string | null;
+  secondaryLabel?: string | null;
+  secondaryLink?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -301,16 +290,6 @@ export interface CalltoActionBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'Cta';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Buttons".
- */
-export interface Buttons {
-  primaryLabel?: string | null;
-  primaryLink?: string | null;
-  secondaryLabel?: string | null;
-  secondaryLink?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -538,7 +517,7 @@ export interface Scooter {
   id: number;
   productName: string;
   slug: string;
-  layout?: (HeroBlock | ProductIntro | KeyFeatures | FeaturesGrid | OverlayBanner | CardGrid | Stats)[] | null;
+  layout?: (ProductHeroBlock | ProductIntro | KeyFeatures | FeaturesGrid | OverlayBanner | CardGrid | Stats)[] | null;
   names?: NameVariations;
   menuDesc?: string | null;
   category?: (number | null) | Category;
@@ -570,6 +549,40 @@ export interface Scooter {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProductHeroBlock".
+ */
+export interface ProductHeroBlock {
+  heroContent?: {
+    heading?: string | null;
+    body?: string | null;
+    list?:
+      | {
+          listItem?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    buttons?:
+      | {
+          link?: {
+            linkType?: ('internal' | 'custom') | null;
+            newTab?: ('default' | 'newTab') | null;
+            linkLabel?: string | null;
+            page?: (number | null) | Page;
+            url?: string | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
+  heroImages?: {
+    images?: (number | Media)[] | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ProductHero';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -690,7 +703,7 @@ export interface Stats {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Name Variations".
+ * via the `definition` "NameVariations".
  */
 export interface NameVariations {
   shortName?: string | null;
@@ -728,7 +741,7 @@ export interface Specifications {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Max Speed".
+ * via the `definition` "MaxSpeed".
  */
 export interface MaxSpeed {
   speed: number;
@@ -736,7 +749,7 @@ export interface MaxSpeed {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Max Range".
+ * via the `definition` "MaxRange".
  */
 export interface MaxRange {
   value: number;
@@ -744,7 +757,7 @@ export interface MaxRange {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Max User Weight".
+ * via the `definition` "MaxUserWeight".
  */
 export interface MaxUserWeight {
   stone: number;
@@ -752,7 +765,7 @@ export interface MaxUserWeight {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Scooter Weight".
+ * via the `definition` "ScooterWeight".
  */
 export interface ScooterWeight {
   value: number;
@@ -1007,48 +1020,10 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "HeroBlock_select".
  */
 export interface HeroBlockSelect<T extends boolean = true> {
-  heroContent?:
-    | T
-    | {
-        heading?: T;
-        body?: T;
-        list?:
-          | T
-          | {
-              listItem?: T;
-              id?: T;
-            };
-        buttons?:
-          | T
-          | {
-              link?:
-                | T
-                | {
-                    linkType?: T;
-                    newTab?: T;
-                    linkLabel?: T;
-                    page?: T;
-                    url?: T;
-                  };
-              id?: T;
-            };
-      };
-  heroImages?:
-    | T
-    | {
-        images?: T;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CalltoActionBlock_select".
- */
-export interface CalltoActionBlockSelect<T extends boolean = true> {
-  ctaHeading?: T;
-  ctaText?: T;
-  ctaButtons?: T | ButtonsSelect<T>;
+  heroHeading?: T;
+  heroText?: T;
+  heroImage?: T;
+  heroButtons?: T | ButtonsSelect<T>;
   id?: T;
   blockName?: T;
 }
@@ -1061,6 +1036,17 @@ export interface ButtonsSelect<T extends boolean = true> {
   primaryLink?: T;
   secondaryLabel?: T;
   secondaryLink?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CalltoActionBlock_select".
+ */
+export interface CalltoActionBlockSelect<T extends boolean = true> {
+  ctaHeading?: T;
+  ctaText?: T;
+  ctaButtons?: T | ButtonsSelect<T>;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1286,7 +1272,7 @@ export interface ScootersSelect<T extends boolean = true> {
   layout?:
     | T
     | {
-        ProductHero?: T | HeroBlockSelect<T>;
+        ProductHero?: T | ProductHeroBlockSelect<T>;
         ProductIntro?: T | ProductIntroSelect<T>;
         KeyFeatures?: T | KeyFeaturesSelect<T>;
         FeaturesGrid?: T | FeaturesGridSelect<T>;
@@ -1325,6 +1311,45 @@ export interface ScootersSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProductHeroBlock_select".
+ */
+export interface ProductHeroBlockSelect<T extends boolean = true> {
+  heroContent?:
+    | T
+    | {
+        heading?: T;
+        body?: T;
+        list?:
+          | T
+          | {
+              listItem?: T;
+              id?: T;
+            };
+        buttons?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    linkType?: T;
+                    newTab?: T;
+                    linkLabel?: T;
+                    page?: T;
+                    url?: T;
+                  };
+              id?: T;
+            };
+      };
+  heroImages?:
+    | T
+    | {
+        images?: T;
+      };
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1453,11 +1478,11 @@ export interface StatsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Name Variations_select".
+ * via the `definition` "NameVariations_select".
  */
-export interface NameVariationsSelect {
-  shortName?: boolean;
-  shortNameSimple?: boolean;
+export interface NameVariationsSelect<T extends boolean = true> {
+  shortName?: T;
+  shortNameSimple?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1491,35 +1516,35 @@ export interface SpecificationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Max Speed_select".
+ * via the `definition` "MaxSpeed_select".
  */
-export interface MaxSpeedSelect {
-  speed?: boolean;
-  unit?: boolean;
+export interface MaxSpeedSelect<T extends boolean = true> {
+  speed?: T;
+  unit?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Max Range_select".
+ * via the `definition` "MaxRange_select".
  */
-export interface MaxRangeSelect {
-  value?: boolean;
-  unit?: boolean;
+export interface MaxRangeSelect<T extends boolean = true> {
+  value?: T;
+  unit?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Max User Weight_select".
+ * via the `definition` "MaxUserWeight_select".
  */
-export interface MaxUserWeightSelect {
-  stone?: boolean;
-  pounds?: boolean;
+export interface MaxUserWeightSelect<T extends boolean = true> {
+  stone?: T;
+  pounds?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Scooter Weight_select".
+ * via the `definition` "ScooterWeight_select".
  */
-export interface ScooterWeightSelect {
-  value?: boolean;
-  unit?: boolean;
+export interface ScooterWeightSelect<T extends boolean = true> {
+  value?: T;
+  unit?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
