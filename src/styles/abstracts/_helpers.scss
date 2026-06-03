@@ -1,0 +1,44 @@
+@use './variables' as v;
+
+// Helper classes
+
+// Screen Reader Only Class
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.max-width {
+  max-width: v.$max-width !important;
+  margin-inline: auto !important;
+}
+
+.hide {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.txt-centre {
+  text-align: center;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.underline {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.position-relative {
+  position: relative !important;
+}

@@ -1,6 +1,7 @@
 import type { GlobalConfig, Block } from 'payload'
 
 import { revalidateLayout } from './hooks/revalidateLayout'
+import { linkFields } from '@/components/fields/LinkField'
 
 /// Menu Block
 const MenuBlockFooter: Block = {
@@ -36,31 +37,22 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
-      name: 'navItemsFooter',
+      name: 'footerNavigation',
       fields: [
         {
-          name: 'label',
-          type: 'text',
-        },
-
-        {
-          name: 'link',
-          type: 'relationship',
-          relationTo: ['pages'],
-        },
-
-        {
-          name: 'menu', // required
-          type: 'blocks', // required
-          minRows: 1,
-          maxRows: 1,
-          blocks: [
-            // required
-            MenuBlockFooter,
-          ],
-        },
+          name: 'links',
+          label: 'links',
+          type: 'array',
+          fields: [
+            {
+              name: 'label',
+              type: 'text',
+            },
+            ...linkFields, 
+          ]
+        }
       ],
-      maxRows: 10,
+      maxRows: 2,
       type: 'array',
     },
     {

@@ -17,6 +17,7 @@ export const HeroBlock: Block = {
       name: 'heroImage', // required
       type: 'upload', // required
       relationTo: 'media', // required
+       hasMany: true,
     },
     {
       name: 'heroButtons', // required
@@ -25,21 +26,30 @@ export const HeroBlock: Block = {
       fields: [
         // required
         {
-          name: 'primaryLabel',
-          type: 'text',
+          type: "group",
+          fields: [
+          {
+            name: 'primaryLabel',
+            type: 'text',
+          },
+          {
+            name: 'primaryLink',
+            type: 'text',
+          },
+          ]
         },
         {
-          name: 'primaryLink',
-          type: 'text',
-        },
-        {
-          name: 'secondaryLabel',
-          type: 'text',
-        },
-        {
-          name: 'secondaryLink',
-          type: 'text',
-        },
+          type: "group",
+          fields: [
+          {
+            name: 'secondaryLabel',
+            type: 'text',
+          },
+          {
+            name: 'secondaryLink',
+            type: 'text',
+          },
+        ]}
       ],
     },
   ],

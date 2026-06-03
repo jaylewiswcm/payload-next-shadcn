@@ -1,12 +1,14 @@
 import type { Metadata } from 'next'
 //import localFont from 'next/font/local'
 import './globals.css'
+import '@/styles/style.scss'
 import Header from '@/components/globals/header'
 import Footer from '@/components/globals/footer'
+import SmoothScroll from '@/globals/hooks/smoothScroll'
 
 /*const geistSans = localFont({
   src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
+  variable: '--font-gezist-sans',
   weight: '100 900',
 })
 const geistMono = localFont({
@@ -32,6 +34,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <Header />
+        <SmoothScroll />
         {children}
         <Footer />
       </body>

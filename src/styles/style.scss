@@ -1,0 +1,20 @@
+@forward 'base/global';
+
+@forward 'base/general';
+@forward 'base/lenis';
+
+@forward 'base/typography';
+@forward 'abstracts/display';
+
+// Layout
+@forward 'layout/index';
+
+// Blocks
+@forward 'blocks/index';
+
+// Components
+@forward 'components/index';
+
+// Pages
+@forward 'pages/index';
+ 

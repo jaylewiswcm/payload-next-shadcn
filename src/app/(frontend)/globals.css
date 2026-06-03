@@ -1,9 +1,9 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
 }
 
 @layer utilities {
@@ -109,4 +109,4 @@ body {
 .rich-text-block ul.list-bullet {
   list-style: initial;
   padding-left: 15px;
-}
+} */

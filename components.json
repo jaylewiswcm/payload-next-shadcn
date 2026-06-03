@@ -3,6 +3,14 @@
   "style": "default",
   "rsc": true,
   "tsx": true,
+  "registries": {
+    "@shadcnblocks": {
+      "url": "https://shadcnblocks.com/r/{name}",
+      "headers": {
+        "Authorization": "Bearer ${SHADCNBLOCKS_API_KEY}"
+      }
+    }
+  },
   "tailwind": {
     "config": "tailwind.config.ts",
     "css": "src/app/globals.css",
@@ -11,9 +19,9 @@
     "prefix": ""
   },
   "aliases": {
-    "components": "@/components",
+    "components": "@/components/shadcn/blocks",
     "utils": "@/lib/utils",
-    "ui": "@/components/ui",
+    "ui": "@/components/shadcn/ui",
     "lib": "@/lib",
     "hooks": "@/hooks"
   },

@@ -8,6 +8,12 @@ import { FeaturesBlock } from './blocks/FeaturesBlock'
 import { GridCardsBlock } from './blocks/GridCardsBlock'
 import { LogosBlock } from './blocks/LogosBlock'
 import { RichText } from './blocks/RichText'
+import { ExploreProducts } from './blocks/ExploreProducts'
+import { CoverBanner } from './blocks/CoverBanner'
+import { FeatureColumns } from './blocks/FeatureColumns'
+import { FeatureAccordion } from './blocks/FeatureAccordion'
+// New
+
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -100,6 +106,10 @@ export const Pages: CollectionConfig = {
         GridCardsBlock,
         QuoteBlock,
         LogosBlock,
+        ExploreProducts,
+        CoverBanner,
+        FeatureColumns,
+        FeatureAccordion
       ],
     },
   ],

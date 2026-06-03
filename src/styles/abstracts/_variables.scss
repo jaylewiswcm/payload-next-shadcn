@@ -1,0 +1,47 @@
+@use 'sass:math';
+
+/* Fonts 
+ * The font names being used in the theme.
+*/
+
+$font:  ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";;
+
+// Line Length
+
+$line-length-default: 100ch;
+
+// Spacing
+
+$outer-space-xs: 1rem; // mobile
+$outer-space-sm: 2rem;
+$outer-space-md: 6rem;
+$outer-space-lg: 7rem;
+$outer-space-xlg: 11rem;
+
+// SIZES
+$max-width: 1750px;
+
+$full-width: 100%;
+
+// Break Points
+
+// For Small Devices (Mobile Devices)
+$screen-sm: 320px;
+
+// For Medium Devices (iPads)
+$screen-md: 768px;
+
+// For Large Devices (Tablets, Small screens)
+$screen-lg: 960px;
+
+// Extra Large Devices (Desktops, laptops)
+$screen-xl: 1200px;
+
+// easings
+$soft-in: cubic-bezier(0.38, 0, 0.28, 1);
+
+// Border Radius
+$radius-sm: 0.25rem;
+$radius-md: 0.4rem;
+$radius-lg: 1.5rem;
+$radius-xlg: 3.125rem;

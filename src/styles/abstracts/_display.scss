@@ -1,0 +1,116 @@
+// Flexbox Utility Classes using SCSS loops
+
+// Display
+$display-types: (
+  'flex': flex,
+  'inline-flex': inline-flex,
+  'block': block,
+  'none': none,
+  'inline': inline,
+);
+
+@each $name, $value in $display-types {
+  .#{$name} {
+    display: $value;
+  }
+}
+
+// Flex Direction
+$flex-directions: (
+  'row': row,
+  'row-reverse': row-reverse,
+  'column': column,
+  'column-reverse': column-reverse,
+);
+
+@each $name, $value in $flex-directions {
+  .flex-#{$name} {
+    flex-direction: $value;
+  }
+}
+
+// Flex Wrap
+$flex-wraps: (
+  'wrap': wrap,
+  'nowrap': nowrap,
+  'wrap-reverse': wrap-reverse,
+);
+
+@each $name, $value in $flex-wraps {
+  .flex-#{$name} {
+    flex-wrap: $value;
+  }
+}
+
+// Justify Content
+$justify-contents: (
+  'start': flex-start,
+  'end': flex-end,
+  'center': center,
+  'between': space-between,
+  'around': space-around,
+  'evenly': space-evenly,
+);
+
+@each $name, $value in $justify-contents {
+  .justify-#{$name} {
+    justify-content: $value;
+  }
+}
+
+// Align Items
+$align-items: (
+  'start': flex-start,
+  'end': flex-end,
+  'center': center,
+  'baseline': baseline,
+  'stretch': stretch,
+);
+
+@each $name, $value in $align-items {
+  .items-#{$name} {
+    align-items: $value;
+  }
+}
+
+// Align Content
+$align-contents: (
+  'start': flex-start,
+  'end': flex-end,
+  'center': center,
+  'between': space-between,
+  'around': space-around,
+  'stretch': stretch,
+);
+
+@each $name, $value in $align-contents {
+  .content-#{$name} {
+    align-content: $value;
+  }
+}
+
+// Align Self
+$align-selfs: (
+  'auto': auto,
+  'start': flex-start,
+  'end': flex-end,
+  'center': center,
+  'stretch': stretch,
+);
+
+@each $name, $value in $align-selfs {
+  .self-#{$name} {
+    align-self: $value;
+  }
+}
+
+// Flex Grow/Shrink
+@for $i from 0 through 1 {
+  .flex-grow-#{$i} {
+    flex-grow: $i;
+  }
+
+  .flex-shrink-#{$i} {
+    flex-shrink: $i;
+  }
+}

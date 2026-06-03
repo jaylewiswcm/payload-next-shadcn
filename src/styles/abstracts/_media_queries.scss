@@ -1,0 +1,37 @@
+@use '../abstracts/variables' as v;
+
+// For Small Devices (Mobile Devices)
+@mixin xsm {
+  @media only screen and (min-width: v.$screen-sm) {
+    @content;
+  }
+}
+
+// For Medium Devices (iPads)
+@mixin md {
+  @media only screen and (min-width: v.$screen-md) {
+    @content;
+  }
+}
+
+// (Tablets, Small screens)
+// 960 and below
+@mixin lgm {
+  @media only screen and (max-width: v.$screen-lg) {
+    @content;
+  }
+}
+
+// 960 pixels and above
+@mixin lgd {
+  @media only screen and (min-width: v.$screen-lg) {
+    @content;
+  }
+}
+
+// Extra Large Devices (Desktops, laptops)
+@mixin xl {
+  @media only screen and (min-width: v.$screen-xl) {
+    @content;
+  }
+}

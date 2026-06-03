@@ -1,0 +1,40 @@
+/* 
+ * Define any fonts that are being used locally here.
+ * 1. Do not define variables that are used in style blocks, please use _variables.scss for that purpose.
+ * 2. The contents of this file can be removed if an alternative method of requiring fonts is being used, e.g Google Fonts, Adobe Fonts 
+*/
+@use 'mixins';
+
+// This path is defined to be able to use the same font declarations
+// on the theme side and the Gutenberg side.
+// $font-path: "/wp-content/themes/ligo-bio/src/fonts/" !default;
+$font-path: '../fonts/' !default;
+// Define the paths for your fonts here, one per variable:
+
+//Fonts
+
+$space-grotesk-path: $font-path + 'space-grotesk/';
+$space-mono-path: $font-path + 'space-mono/';
+
+$onsite-path: $font-path + 'onsite/';
+
+// Set Varaible Fonts
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url($space-grotesk-path + 'SpaceGrotesk-VariableFont_wght.woff2') format('woff2');
+  font-weight: 100 900; /* range of wght axis */
+  font-style: normal;
+}
+
+// Add all the weights and styles used for the site.
+// This renders a respective @font-face for each one that is mentioned.
+
+@include mixins.font('Space Mono', $space-mono-path + 'SpaceMono-Bold', 700);
+@include mixins.font('Space Mono', $space-mono-path + 'SpaceMono-BoldItalic', 700, italic);
+@include mixins.font('Space Mono', $space-mono-path + 'SpaceMono-Regular', 400);
+@include mixins.font('Space Mono', $space-mono-path + 'SpaceMono-Regular', 400, italic);
+
+@include mixins.font('Onsite', $onsite-path + 'OnsiteStandard-Book', 400);
+@include mixins.font('Onsite', $onsite-path + 'OnsiteStandard-BookItalic', 400, italic);
+@include mixins.font('Onsite', $onsite-path + 'Onsite-Light', 300);
+@include mixins.font('Onsite', $onsite-path + 'Onsite-LightItalic', 300, italic);

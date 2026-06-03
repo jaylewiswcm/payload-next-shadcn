@@ -18,6 +18,7 @@ export const fetchPage = async (slug: string, preview: boolean = false) => {
     overrideAccess: preview,
     pagination: false,
     where: query,
+    
   })
 
   const page = pages.docs[0]

@@ -2,6 +2,7 @@ import { withPayload } from '@payloadcms/next/withPayload'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  turbopack: {},
   images: {
     remotePatterns: [
       {
@@ -14,4 +15,7 @@ const nextConfig = {
   },
 }
 
-export default withPayload(nextConfig)
+export default withPayload(nextConfig,{
+  devBundleServerPackages: false,
+  turbopack: true,
+})

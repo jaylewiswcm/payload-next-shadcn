@@ -1,0 +1,147 @@
+@use './variables' as v;
+@use './palette' as p;
+
+@use 'sass:math';
+
+/* Include a font file into theme style. */
+@mixin font($name, $path, $weight: 400, $style: normal) {
+  @font-face {
+    font-family: $name;
+    src:
+      local($name),
+      /* Super Modern Browsers */ url($path + '.woff2'),
+      /* Modern Browsers */ url($path + '.woff');
+    /* Safari, Android, iOS */
+    // url($path + ".ttf") format("truetype"),
+    /* Legacy iOS */
+    // url($path + ".svg") format("svg");
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+// convert pixels to rem
+$base-font-size: 16px !default;
+
+// Convert px to rem - direct conversion function
+@function rem($pixels) {
+  @if (math.is-unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @return calc($pixels / $base-font-size * 1rem);
+}
+
+// Hover links
+
+@mixin hyperlink($background: p.clr(navyblue-200), $hover-text: p.clr(chalkyblue)) {
+  a:not([class*='button']),
+  p a {
+    display: inline;
+    background-image: linear-gradient(rgba($background, 90%), rgba($background, 90%));
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 4px;
+    color: p.clr('chalkyblue');
+    text-decoration: underline;
+    font-size: inherit;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: $hover-text;
+      background-size: 100% 100%;
+    }
+  }
+}
+
+// TRANSITION
+
+@mixin transition($item: all, $ease: ease-in-out, $duration: 0.3s) {
+  transition: $item $ease $duration;
+}
+
+//**********************************
+// Animation Mixins
+//**********************************
+
+@mixin fadeEffect($duration: 1s, $delay: 0s) {
+  // animation: fadeEffect $duration $delay;
+  animation: fadeEffect $duration ease-in-out $delay both;
+}
+
+// ----------------------------------------
+// Spacing Scale Map
+// ----------------------------------------
+
+$spacing-scale: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 1rem,
+  4: 1.5rem,
+  5: 2rem,
+  6: 3rem,
+  auto: auto,
+);
+
+// ----------------------------------------
+// Margin Utility Mixin
+// ----------------------------------------
+
+@mixin generate-margin-utilities($spacings) {
+  @each $key, $value in $spacings {
+    .m-#{$key} {
+      margin: $value;
+    }
+
+    .m-top-#{$key} {
+      margin-top: $value;
+    }
+
+    .m-bottom-#{$key} {
+      margin-bottom: $value;
+    }
+
+    .m-left-#{$key} {
+      margin-left: $value;
+    }
+
+    .m-right-#{$key} {
+      margin-right: $value;
+    }
+
+    .m-block-#{$key} {
+      margin-block: $value;
+    }
+
+    .m-inline-#{$key} {
+      margin-inline: $value;
+    }
+  }
+}
+
+// ----------------------------------------
+// Generate Margin Utilities
+// ----------------------------------------
+
+@include generate-margin-utilities($spacing-scale);
+
+@mixin liquid-glass(
+  $blur: 10px,
+  $saturation: 180%,
+  $tint: rgba(255, 255, 255, 0.08),
+  $border-opacity: 0.18,
+  $radius: 0
+) {
+  border-radius: $radius;
+  background: $tint;
+  -webkit-backdrop-filter: blur($blur);
+  backdrop-filter: blur($blur);
+  // -webkit-backdrop-filter: blur($blur) saturate($saturation);
+  // backdrop-filter: blur($blur) saturate($saturation);
+  // border: 1px solid rgba(255, 255, 255, $border-opacity);
+  // box-shadow:
+  //   0 8px 32px rgba(0, 0, 0, 0.12),
+  //   inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}

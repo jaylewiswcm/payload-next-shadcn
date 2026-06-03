@@ -1,0 +1,13 @@
+@use '../abstracts/mixins' as mx;
+@use '../abstracts/palette' as p;
+@use '../abstracts/variables' as v;
+@use '../abstracts/media_queries' as mq;
+
+.template--not-found {
+  .hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

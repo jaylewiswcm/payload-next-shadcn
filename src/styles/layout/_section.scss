@@ -1,0 +1,30 @@
+@use '../abstracts/palette' as p;
+@use '../abstracts/variables' as v;
+@use '../abstracts/media_queries' as mq;
+@use '../abstracts/mixins' as mx;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  padding-block: 4rem !important;
+  padding-inline: v.$outer-space-sm;
+  // overflow: hidden; 
+  position: relative;
+  z-index: 2;
+  @include mq.md {
+    padding-block: 5rem !important;
+    padding-inline: v.$outer-space-sm;
+  }
+
+  @include mq.lgd {
+    padding-block: 5rem !important;
+    padding-inline: v.$outer-space-md;
+  }
+  &--intro {
+    min-height: 100vh;
+  }
+  .container {
+    margin-inline: auto;
+  }
+}

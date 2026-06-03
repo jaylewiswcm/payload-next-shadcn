@@ -27,7 +27,7 @@ export default async function Page({ params }: Props) {
   const { layout } = page
 
   return (
-    <div>
+    <div className="wrapper flex flex-col content-center items-center">
       <Blocks blocks={layout} />
     </div>
   )

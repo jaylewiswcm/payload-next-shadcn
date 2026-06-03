@@ -1,0 +1,105 @@
+@use 'sass:map';
+
+$colour-main: (
+  'white': #ffffff,
+  'grey': #d2d2d7,
+  'navy': #120742,
+  'light-blue': #def1f9,
+  'blue': #afc9d3,
+  'ice-blue': #f2f9fd,
+  'black': #000,
+  'black-ink': #0f0e12,
+);
+
+@function clr($colour-name) {
+  @return map.get($colour-main, $colour-name);
+}
+
+@each $name, $clr in $colour-main {
+  .text-#{$name} {
+    color: $clr !important;
+  }
+
+  .bg-#{$name} {
+    background-color: $clr;
+  }
+
+  .accent--#{$name} {
+    color: $clr;
+  }
+
+  .fill--#{$name} {
+    fill: $clr;
+    path {
+      fill: $clr;
+    }
+  }
+
+  .stroke--#{$name} {
+    stroke: $clr;
+    path {
+      stroke: $clr;
+    }
+  }
+
+  .user-input-accent--#{$name} {
+    strong {
+      color: $clr;
+    }
+  }
+
+  .border--#{$name} {
+    border-color: $clr;
+  }
+}
+
+.bg-green {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  span {
+    color: clr('black');
+  }
+  .button {
+    .hover {
+      background-color: clr('black');
+    }
+    &:hover {
+      // border-color: clr('green');
+      .txt {
+        color: clr('green');
+      }
+    }
+  }
+}
+.bg-white {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  span {
+    color: clr('black');
+  }
+}
+.bg-grey {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  span {
+    color: clr('black');
+  }
+}
