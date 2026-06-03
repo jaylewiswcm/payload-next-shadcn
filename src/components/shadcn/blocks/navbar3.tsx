@@ -243,7 +243,7 @@ const Navbar3 = ({ className, header }: Navbar3Props) => {
             <div>
               {(!open || !submenu) && (
                 <>
-                  <Logo url="https://shadcnblocks.com">
+                  <Logo url="/">
                     <LogoImageDesktop
                       src={logo.url}
                       className="h-9 dark:invert"
