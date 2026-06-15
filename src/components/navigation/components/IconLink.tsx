@@ -22,7 +22,7 @@ export function IconLink({link}: Props) {
     
     const {title, url, page, icon} = link;
     
-    console.log('link: ', link)
+    // console.log('link: ', link)
 
   return (
     <NavigationMenuLink href={url} className="group flex flex-row items-center gap-3 rounded-md px-2 py-1.5 transition-colors hover:bg-muted/90 dark:hover:bg-muted/70">

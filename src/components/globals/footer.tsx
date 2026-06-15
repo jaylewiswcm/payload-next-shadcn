@@ -1,4 +1,4 @@
-import { Separator } from '@/components/ui/separator'
+import { Separator } from '@/components/shadcn/ui/separator'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Fragment } from 'react'
@@ -9,7 +9,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { Button } from "@/components/shadcn/ui/button";
 import { Input } from "@/components/shadcn/ui/input";
 import { cn } from "@/lib/utils";
-import MediaImage from '../custom/MediaImage'
+import MediaImage from '../ui/MediaImage'
 
 const sections = [
   {

@@ -10,7 +10,7 @@ import { Button } from "@/components/shadcn/ui/button";
 
 import { cn } from "@/lib/utils";
 import { FeaturesGrid as FeaturesGridTypes } from "@/payload-types";
-import MediaImage from "@/components/custom/MediaImage";
+import MediaImage from "@/components/ui/MediaImage";
 import Icon from "@/components/icons";
 
 

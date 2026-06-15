@@ -13,7 +13,7 @@ import {
 import { cn } from "@/lib/utils";
 import { KeyFeatures as KeyFeaturesTypes } from "@/payload-types";
 import Icon from "@/components/icons";
-import MediaImage from "@/components/custom/MediaImage";
+import MediaImage from "@/components/ui/MediaImage";
 
 interface KeyFeaturesProps {
   className?: string;

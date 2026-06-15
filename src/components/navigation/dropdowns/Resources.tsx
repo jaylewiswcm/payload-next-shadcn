@@ -1,14 +1,16 @@
 /*
 Render all blocks components from payload 
 */
+'use client';
 
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Page } from '@/payload-types'
 import { NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from '@/components/shadcn/ui/navigation-menu'
 import {CardLink} from '../components/CardLink';
 import {IconLink} from '../components/IconLink';
 import { ResourceSubmenu } from '.';
 import { ChevronDown } from 'lucide-react';
+import { useNavContext } from '@/globals/context/navContext';
 
 type Props = {
  submenu: ResourceSubmenu
@@ -19,11 +21,16 @@ export default function ResourceDropDown({submenu, label}: Props) {
 
     const {linkList, articles} = submenu;
 
-    // console.log(submenu)
+    const { activeMenu, setNavWidth, navWidth } = useNavContext();
+              
+    useEffect(() => {
+        if(activeMenu == label) { setNavWidth('900px') }
+    },[activeMenu])
+
   return (
-        <NavigationMenuContent className="min-w-[900px] p-8">
-            <div className="flex justify-between gap-6">
-                <div className="w-1/3 max-w-[510px]">
+        <NavigationMenuContent className={`min-w-[${navWidth}}] p-8 flex w-full`} id={label}>
+            <div className="flex gap-6 w-full">
+                <div className="w-[30%]">
                     <div className="flex items-center mb-5">
                         <p className="text-2xl font-extrabold">{label}</p>
                         <ChevronDown className="ml-1 h-6 w-6 text-gray-500" aria-hidden="true"/>
@@ -34,8 +41,8 @@ export default function ResourceDropDown({submenu, label}: Props) {
                         ))}
                     </div>
                 </div>
-                <div className="w-3/5 max-w-[510px]">
-                <p className="text-base font-bold">{articles.heading}</p>
+                <div className="w-[70%]">
+                    <p className="text-base font-bold">{articles.heading}</p>
                 </div>
             </div>
         </NavigationMenuContent>

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shadcn/ui/button'
 import { ProductIntro } from '@/payload-types'
 import Icon from '../icons'
 
@@ -11,7 +11,7 @@ export default function Intro({content}: Props) {
   const { useIcon, heading, body } = content
   return (
     <>
-      <section className="section w-full">
+      <section className="section w-full border-b border-gray-400">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center rounded-lg p-8 text-center md:rounded-xl lg:p-16">
             {useIcon && 

@@ -1,5 +1,5 @@
-import { Card, CardHeader, CardContent } from '@/components/ui/card'
-import { AspectRatio } from '@/components/ui/aspect-ratio'
+import { Card, CardHeader, CardContent } from '@/components/shadcn/ui/card'
+import { AspectRatio } from '@/components/shadcn/ui/aspect-ratio'
 import Image from 'next/image'
 import Link from 'next/link'
 import { GridCardsBlock } from '@/payload-types'

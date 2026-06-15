@@ -250,6 +250,7 @@ export interface Page {
         | CoverBanner
         | FeatureColumns
         | FeatureAccordion
+        | ReviewsCarousel
       )[]
     | null;
   updatedAt: string;
@@ -499,6 +500,19 @@ export interface FeatureAccordion {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ReviewsCarousel".
+ */
+export interface ReviewsCarousel {
+  content?: {
+    heading?: string | null;
+    body?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ReviewsCarousel';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
@@ -517,7 +531,20 @@ export interface Scooter {
   id: number;
   productName: string;
   slug: string;
-  layout?: (ProductHeroBlock | ProductIntro | KeyFeatures | FeaturesGrid | OverlayBanner | CardGrid | Stats)[] | null;
+  layout?:
+    | (
+        | ProductHero
+        | ProductIntro
+        | KeyFeatures
+        | FeaturesGrid
+        | OverlayBanner
+        | CardGrid
+        | SpecificationsBlock
+        | FeatureAccordion
+        | CustomerPhotographs
+        | ImageHotspots
+      )[]
+    | null;
   names?: NameVariations;
   menuDesc?: string | null;
   category?: (number | null) | Category;
@@ -545,16 +572,16 @@ export interface Scooter {
       }[]
     | null;
   hero?: Hero;
-  specifications: Specifications;
+  specs: Specifications;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ProductHeroBlock".
+ * via the `definition` "ProductHero".
  */
-export interface ProductHeroBlock {
+export interface ProductHero {
   heroContent?: {
     heading?: string | null;
     body?: string | null;
@@ -689,9 +716,9 @@ export interface CardGrid {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Stats".
+ * via the `definition` "SpecificationsBlock".
  */
-export interface Stats {
+export interface SpecificationsBlock {
   content?: {
     heading?: string | null;
     body?: string | null;
@@ -699,7 +726,47 @@ export interface Stats {
   };
   id?: string | null;
   blockName?: string | null;
-  blockType: 'Stats';
+  blockType: 'SpecificationsBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CustomerPhotographs".
+ */
+export interface CustomerPhotographs {
+  content?: {
+    heading?: string | null;
+    body?: string | null;
+    buttons?:
+      | {
+          link?: {
+            linkType?: ('internal' | 'custom') | null;
+            newTab?: ('default' | 'newTab') | null;
+            linkLabel?: string | null;
+            page?: (number | null) | Page;
+            url?: string | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
+  images?: (number | Media)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'CustomerPhotographs';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageHotspots".
+ */
+export interface ImageHotspots {
+  content?: {
+    heading?: string | null;
+    body?: string | null;
+  };
+  image?: (number | null) | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ImageHotspots';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -722,54 +789,75 @@ export interface Hero {
  * via the `definition` "Specifications".
  */
 export interface Specifications {
-  maxSpeedGroup: MaxSpeed;
-  maxRangeGroup: MaxRange;
-  maxUserWeightGroup: MaxUserWeight;
-  scooterWghtGroup: ScooterWeight;
-  maxSpeed?: string | null;
-  maxRange?: string | null;
-  maxUserWeight?: string | null;
-  weight?: string | null;
-  battery?: string | null;
-  fixedLights?: boolean | null;
-  offBoardingCharging?: boolean | null;
-  testLights?: ('yes' | 'no') | null;
-  maxSlope?: string | null;
-  turningRadius?: string | null;
-  suspension?: boolean | null;
-  tyreType?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MaxSpeed".
- */
-export interface MaxSpeed {
-  speed: number;
-  unit: 'mph' | 'kph';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MaxRange".
- */
-export interface MaxRange {
-  value: number;
-  unit: 'miles' | 'kilometers';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MaxUserWeight".
- */
-export interface MaxUserWeight {
-  stone: number;
-  pounds: number;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ScooterWeight".
- */
-export interface ScooterWeight {
-  value: number;
-  unit: 'kg';
+  stats: {
+    maxSpeed: {
+      value: number;
+      unit?: ('mph' | 'kph') | null;
+    };
+    maxRange: {
+      value: number;
+      unit?: ('miles' | 'kilometers') | null;
+    };
+    maxUserWeight: {
+      stone: number;
+      lbs: number;
+    };
+    scooterWeight: {
+      stone: number;
+      lbs: number;
+    };
+    battery: {
+      value: number;
+      unit?: 'Ah Lith.' | null;
+    };
+    fixedLights?: ('yes' | 'no') | null;
+    offBoardCharging?: ('yes' | 'no') | null;
+    suspension?: ('yes' | 'no') | null;
+    maxSlope?: {
+      value?: number | null;
+      unit?: string | null;
+    };
+    turningRadius?: {
+      value?: number | null;
+      unit?: ('mm' | 'in') | null;
+    };
+    tyreType?: string | null;
+  };
+  dimensions?: {
+    totalLength?: number | null;
+    totalWidth?: number | null;
+    totalHeight?: number | null;
+    foldedHeight?: number | null;
+    seatWidth?: number | null;
+    seatDepth?: number | null;
+    backrestHeight?: number | null;
+    handlebarWidth?: number | null;
+    groundClearance?: number | null;
+    frontWheelDiameter?: number | null;
+    rearWheelDiameter?: number | null;
+  };
+  protection?: {
+    insurance?: string | null;
+    warranty?: string | null;
+  };
+  promotional?: {
+    tradeIn?: string | null;
+    finance?: string | null;
+  };
+  finishes?: {
+    finish?: string | null;
+  };
+  /**
+   * Use this for any additional stats to show in the top line stats section
+   */
+  extraStats?:
+    | {
+        name: string;
+        value: string;
+        suffix?: string | null;
+        id?: string | null;
+      }[]
+    | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1010,6 +1098,7 @@ export interface PagesSelect<T extends boolean = true> {
         CoverBanner?: T | CoverBannerSelect<T>;
         FeatureColumns?: T | FeatureColumnsSelect<T>;
         FeatureAccordion?: T | FeatureAccordionSelect<T>;
+        ReviewsCarousel?: T | ReviewsCarouselSelect<T>;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1237,6 +1326,20 @@ export interface AccordionsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ReviewsCarousel_select".
+ */
+export interface ReviewsCarouselSelect<T extends boolean = true> {
+  content?:
+    | T
+    | {
+        heading?: T;
+        body?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories_select".
  */
 export interface CategoriesSelect<T extends boolean = true> {
@@ -1272,13 +1375,16 @@ export interface ScootersSelect<T extends boolean = true> {
   layout?:
     | T
     | {
-        ProductHero?: T | ProductHeroBlockSelect<T>;
+        ProductHero?: T | ProductHeroSelect<T>;
         ProductIntro?: T | ProductIntroSelect<T>;
         KeyFeatures?: T | KeyFeaturesSelect<T>;
         FeaturesGrid?: T | FeaturesGridSelect<T>;
         OverlayBanner?: T | OverlayBannerSelect<T>;
         CardGrid?: T | CardGridSelect<T>;
-        Stats?: T | StatsSelect<T>;
+        SpecificationsBlock?: T | SpecificationsBlockSelect<T>;
+        FeatureAccordion?: T | FeatureAccordionSelect<T>;
+        CustomerPhotographs?: T | CustomerPhotographsSelect<T>;
+        ImageHotspots?: T | ImageHotspotsSelect<T>;
       };
   names?: T | NameVariationsSelect<T>;
   menuDesc?: T;
@@ -1307,16 +1413,16 @@ export interface ScootersSelect<T extends boolean = true> {
         id?: T;
       };
   hero?: T | HeroSelect<T>;
-  specifications?: T | SpecificationsSelect<T>;
+  specs?: T | SpecificationsSelect<T>;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ProductHeroBlock_select".
+ * via the `definition` "ProductHero_select".
  */
-export interface ProductHeroBlockSelect<T extends boolean = true> {
+export interface ProductHeroSelect<T extends boolean = true> {
   heroContent?:
     | T
     | {
@@ -1463,9 +1569,9 @@ export interface CardGridSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Stats_select".
+ * via the `definition` "SpecificationsBlock_select".
  */
-export interface StatsSelect<T extends boolean = true> {
+export interface SpecificationsBlockSelect<T extends boolean = true> {
   content?:
     | T
     | {
@@ -1473,6 +1579,50 @@ export interface StatsSelect<T extends boolean = true> {
         body?: T;
         includeSwitch?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CustomerPhotographs_select".
+ */
+export interface CustomerPhotographsSelect<T extends boolean = true> {
+  content?:
+    | T
+    | {
+        heading?: T;
+        body?: T;
+        buttons?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    linkType?: T;
+                    newTab?: T;
+                    linkLabel?: T;
+                    page?: T;
+                    url?: T;
+                  };
+              id?: T;
+            };
+      };
+  images?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageHotspots_select".
+ */
+export interface ImageHotspotsSelect<T extends boolean = true> {
+  content?:
+    | T
+    | {
+        heading?: T;
+        body?: T;
+      };
+  image?: T;
   id?: T;
   blockName?: T;
 }
@@ -1497,54 +1647,96 @@ export interface HeroSelect<T extends boolean = true> {
  * via the `definition` "Specifications_select".
  */
 export interface SpecificationsSelect<T extends boolean = true> {
-  maxSpeedGroup?: T | MaxSpeedSelect<T>;
-  maxRangeGroup?: T | MaxRangeSelect<T>;
-  maxUserWeightGroup?: T | MaxUserWeightSelect<T>;
-  scooterWghtGroup?: T | ScooterWeightSelect<T>;
-  maxSpeed?: T;
-  maxRange?: T;
-  maxUserWeight?: T;
-  weight?: T;
-  battery?: T;
-  fixedLights?: T;
-  offBoardingCharging?: T;
-  testLights?: T;
-  maxSlope?: T;
-  turningRadius?: T;
-  suspension?: T;
-  tyreType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MaxSpeed_select".
- */
-export interface MaxSpeedSelect<T extends boolean = true> {
-  speed?: T;
-  unit?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MaxRange_select".
- */
-export interface MaxRangeSelect<T extends boolean = true> {
-  value?: T;
-  unit?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MaxUserWeight_select".
- */
-export interface MaxUserWeightSelect<T extends boolean = true> {
-  stone?: T;
-  pounds?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ScooterWeight_select".
- */
-export interface ScooterWeightSelect<T extends boolean = true> {
-  value?: T;
-  unit?: T;
+  stats?:
+    | T
+    | {
+        maxSpeed?:
+          | T
+          | {
+              value?: T;
+              unit?: T;
+            };
+        maxRange?:
+          | T
+          | {
+              value?: T;
+              unit?: T;
+            };
+        maxUserWeight?:
+          | T
+          | {
+              stone?: T;
+              lbs?: T;
+            };
+        scooterWeight?:
+          | T
+          | {
+              stone?: T;
+              lbs?: T;
+            };
+        battery?:
+          | T
+          | {
+              value?: T;
+              unit?: T;
+            };
+        fixedLights?: T;
+        offBoardCharging?: T;
+        suspension?: T;
+        maxSlope?:
+          | T
+          | {
+              value?: T;
+              unit?: T;
+            };
+        turningRadius?:
+          | T
+          | {
+              value?: T;
+              unit?: T;
+            };
+        tyreType?: T;
+      };
+  dimensions?:
+    | T
+    | {
+        totalLength?: T;
+        totalWidth?: T;
+        totalHeight?: T;
+        foldedHeight?: T;
+        seatWidth?: T;
+        seatDepth?: T;
+        backrestHeight?: T;
+        handlebarWidth?: T;
+        groundClearance?: T;
+        frontWheelDiameter?: T;
+        rearWheelDiameter?: T;
+      };
+  protection?:
+    | T
+    | {
+        insurance?: T;
+        warranty?: T;
+      };
+  promotional?:
+    | T
+    | {
+        tradeIn?: T;
+        finance?: T;
+      };
+  finishes?:
+    | T
+    | {
+        finish?: T;
+      };
+  extraStats?:
+    | T
+    | {
+        name?: T;
+        value?: T;
+        suffix?: T;
+        id?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

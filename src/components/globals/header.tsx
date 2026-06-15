@@ -11,7 +11,9 @@ export default async function HeaderPage() {
     data = await fetchHeader()
   } catch (error) {
     console.error(error)
-  }
+  } 
+
+  console.log('Header: ', data);
 
   if (!data) {
     return <></>

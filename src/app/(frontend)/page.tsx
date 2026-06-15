@@ -2,6 +2,7 @@ import { fetchPage } from '@/lib/payload/fetchPage'
 import { notFound } from 'next/navigation'
 import Blocks from '@/components/blocks/blocks'
 import type { Metadata } from 'next'
+import Form from '@/components/forms'
 
 /// todo improve seo: https://payloadcms.com/docs/plugins/seo
 
@@ -27,9 +28,10 @@ export default async function Page({ params }: Props) {
   const { layout } = page
 
   return (
-    <div className="wrapper flex flex-col content-center items-center">
+    <>
       <Blocks blocks={layout} />
-    </div>
+      <Form />
+    </>
   )
 }
 

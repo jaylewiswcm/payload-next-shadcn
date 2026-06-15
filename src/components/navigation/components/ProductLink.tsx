@@ -30,13 +30,13 @@ export function ProductLink({product}: Props) {
 
     const { slug, productName, category, productCutout, menuDesc} = value
     
-    console.log('product: ', value);
+    // console.log('product: ', value);
 
     const url = typeof category == 'object' && category ? '/' + category.slug + '/' + slug : '/' + slug;
 
     return (
         <NavigationMenuLink href={url} className="group flex flex-col items-center gap-3 rounded-md px-2 py-1.5 transition-colors hover:bg-muted/90 dark:hover:bg-muted/70">
-            <div className="flex size-50 shrink-0 items-center justify-center rounded-md p-1.5 transition-colors group-hover:bg-muted dark:group-hover:bg-muted">
+            <div className="flex size-50 shrink-0 items-center justify-center rounded-md p-1.5 transition-colors aspect-[8/7] as w-full group-hover:bg-muted dark:group-hover:bg-muted">
                 {typeof productCutout === 'object' && productCutout !== null && (
                     <Image
                         src={productCutout.url}
@@ -47,10 +47,9 @@ export function ProductLink({product}: Props) {
                 )}
             </div>
             <div className=" text-foreground">
-                <p className="text-base font-semibold">{productName}</p>
-                <p className="text-sm font-normal text-muted-foreground mt-2">{menuDesc}</p>
-                </div>
-
+                <p className="text-sm font-semibold">{productName}</p>
+                <p className="text-xs font-normal text-gray-500 mt-1">{menuDesc}</p>
+            </div>
         </NavigationMenuLink>
     )
 }

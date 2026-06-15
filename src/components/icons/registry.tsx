@@ -1,14 +1,14 @@
 import {
   Tag, ArrowRightLeft, BookOpen, PenLine, MapPinned, Star, Wrench, Truck, 
   Stethoscope, Users, Newspaper, BookOpenText, CirclePoundSterling, MapPinHouse, 
-  CircleQuestionMark, Scooter, HandHelping, Sun, Feather, FoldVertical, Expand
+  CircleQuestionMark, Scooter, HandHelping, Sun, Feather, FoldVertical, Expand, Clock, ScanEye
   , type LucideIcon,
 } from "lucide-react";
 
 export const icons = {
   Tag, ArrowRightLeft, BookOpen, PenLine, MapPinned, Star, Wrench, Truck, 
   Stethoscope, Users, Newspaper, BookOpenText, CirclePoundSterling, MapPinHouse, 
-  CircleQuestionMark, Scooter, HandHelping, Sun, Feather, FoldVertical, Expand
+  CircleQuestionMark, Scooter, HandHelping, Sun, Feather, FoldVertical, Expand, Clock, ScanEye
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof icons;

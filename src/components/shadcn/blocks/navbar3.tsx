@@ -41,10 +41,11 @@ import {
   NavigationMenuTrigger,
 } from "@/components/shadcn/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import Submenu from "@/components/custom/navigation/dropdowns";
+import Submenu from "@/components/navigation/dropdowns";
 import { navigationMenuTriggerStyle } from '@/components/shadcn/ui/navigation-menu'
 
 import { Header } from '@/payload-types'
+import { NavProvider } from "@/globals/context/navContext";
 
 const solutions = [
   {
@@ -237,7 +238,9 @@ const Navbar3 = ({ className, header }: Navbar3Props) => {
       )}
     >
       <div className="container  px-6 mx-auto">
-        <NavigationMenu className="min-w-full [&>div:last-child]:left-1/2 [&>div:last-child]:-translate-x-1/2" >
+        <NavProvider >
+        {/* <NavigationMenu className="min-w-full [&>div:last-child]:left-1/2 [&>div:last-child]:-translate-x-1/2" value="Resources"> */}
+        <NavigationMenu className="min-w-full [&>div:last-child]:left-1/2 [&>div:last-child]:-translate-x-1/2" > 
           <div className="relative z-110 flex w-full items-center justify-between gap-12 bg-background">
             {/* Logo */}
             <div>
@@ -265,10 +268,9 @@ const Navbar3 = ({ className, header }: Navbar3Props) => {
               )}
             </div>
 
-
               <NavigationMenuList className="hidden lg:flex relative z-110">
               {items.map((item, index) => 
-                <NavigationMenuItem key={index} value={index == 4 ? "active" : "" }>
+                <NavigationMenuItem key={index} value={item.label}>
                   {item.hasDropdown ? 
                   <>
                     <NavigationMenuTrigger>{item.label}</NavigationMenuTrigger>
@@ -554,6 +556,7 @@ const Navbar3 = ({ className, header }: Navbar3Props) => {
             </div>
           )}
         </NavigationMenu>
+        </NavProvider>
       </div>
     </section>
   );

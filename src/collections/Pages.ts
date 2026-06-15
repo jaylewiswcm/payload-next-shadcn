@@ -12,6 +12,7 @@ import { ExploreProducts } from './blocks/ExploreProducts'
 import { CoverBanner } from './blocks/CoverBanner'
 import { FeatureColumns } from './blocks/FeatureColumns'
 import { FeatureAccordion } from './blocks/FeatureAccordion'
+import { ReviewsCarousel } from './blocks/trustpilot/ReviewsCarousel'
 // New
 
 
@@ -109,7 +110,8 @@ export const Pages: CollectionConfig = {
         ExploreProducts,
         CoverBanner,
         FeatureColumns,
-        FeatureAccordion
+        FeatureAccordion,
+        ReviewsCarousel,
       ],
     },
   ],

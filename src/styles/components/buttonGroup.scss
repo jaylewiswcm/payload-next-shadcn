@@ -1,0 +1,15 @@
+@use 'sass:math';
+@use '../abstracts/mixins' as mx;
+@use '../abstracts/variables' as v;
+@use '../abstracts/palette' as p;
+@use '../abstracts/media_queries' as mq;
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: .5rem;
+    a {
+        width: 100%;
+    }
+}

@@ -1,0 +1,40 @@
+@use 'sass:math';
+@use '../abstracts/mixins' as mx;
+@use '../abstracts/variables' as v;
+@use '../abstracts/palette' as p;
+@use '../abstracts/media_queries' as mq;
+
+.specifications {
+    &__top-line {
+        &-stats {
+            
+        }
+        &-stat {
+
+        }
+    }
+    &__tables {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem 9rem;
+        @include mq.md {
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem 9rem;
+        }
+    }
+  &__table {
+         &:first-of-type {
+            @include mq.md {
+                grid-row: 1 / 4;
+            }
+            .specifications__table-row {
+                justify-content: space-between;
+            }
+         }
+       &:not(:first-of-type) {
+            @include mq.md {
+                grid-column: 2;
+            }
+        }
+    }
+}

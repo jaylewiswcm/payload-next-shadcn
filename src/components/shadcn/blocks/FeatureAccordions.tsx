@@ -12,8 +12,9 @@ import {
 import { cn } from "@/lib/utils";
 import { FeatureAccordion } from "@/payload-types";
 import Link from "next/link";
-import MediaImage from "@/components/custom/MediaImage";
-import { Button } from "@/components/ui/button";
+import MediaImage from "@/components/ui/MediaImage";
+import { Button } from "@/components/shadcn/ui/button";
+import MSButton from "@/components/ui/Button";
  
 type FeatureAccordionsProps = FeatureAccordion & {
   className?: string;
@@ -40,7 +41,7 @@ const FeatureAccordions = ({ className, heading, body, accordions, button }: Fea
       carouselApi.off("select", updateSelection);
     };
   }, [carouselApi]);
-
+console.log(button)
   return (
     <section className={cn("section", className)}>
       <div className="container">
@@ -89,26 +90,20 @@ const FeatureAccordions = ({ className, heading, body, accordions, button }: Fea
                     <p className="my-4 text-muted-foreground lg:my-6">
                       {accordion.body}
                     </p>
-                    <Link
+
+                      {/* <MSButton link={accordion.link} /> */}
+                    {/* <Link
                       href={accordion.url}
                       className="group/link flex items-center pb-3 text-sm text-accent-foreground"
                     >
                       Learn more{" "}
                       <ArrowRight className="ml-2 size-4 transition-transform group-hover/link:translate-x-1" />
-                    </Link>
+                    </Link> */}
                   </div>
                 </li>
               ))}
             </ul>
-              {button.url &&
-                <Link
-                  href={button.url}
-                  className="group flex w-fit items-center justify-center gap-2 rounded-full mt-12 px-5 py-2 tracking-tight font-normal bg-red-500 text-white cursor-pointer"
-                >
-                <span>{button.label}</span>
-                <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
-              </Link>
-            }
+            {button && <MSButton link={button} primary className="mt-12"/> }
           </div>
         </div>
       </div>

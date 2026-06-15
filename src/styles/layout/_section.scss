@@ -4,27 +4,70 @@
 @use '../abstracts/mixins' as mx;
 
 .section {
-  display: flex;
-  flex-direction: column;
-  // justify-content: center;
-  padding-block: 4rem !important;
-  padding-inline: v.$outer-space-sm;
-  // overflow: hidden; 
-  position: relative;
-  z-index: 2;
-  @include mq.md {
-    padding-block: 5rem !important;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    padding-block: 4rem;
     padding-inline: v.$outer-space-sm;
-  }
+    // overflow: hidden; 
+    position: relative;
+    z-index: 2;
+    @include mq.md {
+      padding-block: 5rem ;
+      padding-inline: v.$outer-space-sm;
+    }
 
-  @include mq.lgd {
-    padding-block: 5rem !important;
-    padding-inline: v.$outer-space-md;
-  }
+    @include mq.lgd {
+      padding-block: 5rem;
+      padding-inline: v.$outer-space-md;
+    }
+  &:has(.section__background) {
+    padding-block: 0rem;
+    padding-inline: 0;
+    @include mq.md {
+      padding-block: 0rem ;
+      padding-inline: 0;
+    }
+
+    @include mq.lgd {
+      padding-block: 0rem;
+      padding-inline: 0;
+    }
+  } 
   &--intro {
     min-height: 100vh;
   }
   .container {
     margin-inline: auto;
+  }
+  
+  &__background {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    padding-block: 4rem ;
+    padding-inline: v.$outer-space-sm;
+    // overflow: hidden; 
+    position: relative;
+    z-index: 2;
+    @include mq.md {
+      padding-block: 5rem ;
+      padding-inline: v.$outer-space-sm;
+    }
+
+    @include mq.lgd {
+      padding-block: 5rem;
+      padding-inline: v.$outer-space-md;
+    }
+  }
+  &--strip {
+     padding-block: 2rem;    
+    @include mq.md {
+      padding-block: 2rem ;
+    }
+
+    @include mq.lgd {
+      padding-block: 2rem;
+    }
   }
 }

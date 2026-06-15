@@ -25,7 +25,7 @@ export const fetchFooter = async () => {
     overrideAccess: false,
   })
 
-  const footer = data
+  const footer = data 
 
   return footer
 }

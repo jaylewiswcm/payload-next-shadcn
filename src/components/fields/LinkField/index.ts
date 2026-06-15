@@ -1,6 +1,15 @@
 // ---------- Reusable link field group ----------
 
+import { Page } from "@/payload-types";
 import { Field } from "payload";
+
+export type LinkFieldType = {
+    linkType?: ('internal' | 'custom') | null;
+    newTab?: ('default' | 'newTab') | null;
+    linkLabel?: string | null;
+    page?: (number | null) | Page;
+    url?: string | null;
+}
 
 // Used by top-level items and inside dropdown blocks.
 export const linkField: any[] = [

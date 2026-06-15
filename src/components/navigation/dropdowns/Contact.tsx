@@ -1,8 +1,8 @@
 /*
 Render all blocks components from payload 
 */
-
-import React, { Fragment } from 'react'
+'use client';
+import React, { Fragment, useEffect } from 'react'
 import { Page } from '@/payload-types'
 import { NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from '@/components/shadcn/ui/navigation-menu'
 import {CardLink} from '../components/CardLink';
@@ -11,6 +11,7 @@ import { ContactSubnmenu, ProductSubmenu } from '.';
 import { ProductLink } from '../components/ProductLink';
 import { ChevronDown } from 'lucide-react';
 import { JSXConvertersFunction, RichText } from '@payloadcms/richtext-lexical/react'
+import { useNavContext } from '@/globals/context/navContext';
 
 type Props = {
  submenu: ContactSubnmenu
@@ -21,6 +22,12 @@ type Props = {
 export default function ContactDropDown({submenu, label}: Props) {
 
   const { pullOutLink, linkList, body} = submenu;
+  
+  const { activeMenu, setNavWidth, navWidth } = useNavContext();
+          
+  useEffect(() => {
+    if(activeMenu == label) { setNavWidth('900px') }
+  },[activeMenu])
 
   const converters: JSXConvertersFunction = ({ defaultConverters }) => ({
   ...defaultConverters,
@@ -55,7 +62,7 @@ export default function ContactDropDown({submenu, label}: Props) {
 })
 
   return (
-        <NavigationMenuContent className="min-w-[900px] p-8">
+        <NavigationMenuContent className={`min-w-[${navWidth}] p-8`}>
             <div className="flex justify-between gap-6">
              
                 <div className="grid grid-cols-1 gap-x-1 gap-y-1 h-fit">

@@ -1,6 +1,6 @@
 "use client";
 
-import MediaImage from "@/components/custom/MediaImage";
+import MediaImage from "@/components/ui/MediaImage";
 import { cn } from "@/lib/utils";
 import { CardGrid as CardGridTypes} from "@/payload-types";
 const integrations = [

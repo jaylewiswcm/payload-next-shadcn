@@ -23,4 +23,4 @@ const MediaImage = ({ image, className, sizes }: MediaImageProps) => {
   )
 }
 
-export default MediaImage
+export default MediaImage 

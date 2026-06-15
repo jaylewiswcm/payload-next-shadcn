@@ -1,9 +1,9 @@
 import { linkField, linkFields } from '@/components/fields/LinkField'
 import { Block } from 'payload'
 
-export const ProductHeroBlock: Block = {
+export const ProductHero: Block = {
   slug: 'ProductHero', // required
-  interfaceName: 'ProductHeroBlock', // optional
+  interfaceName: 'ProductHero', // optional
   fields: [
     // required
     {

@@ -21,13 +21,17 @@ import { FeatureAccordions } from '../shadcn/blocks/FeatureAccordions'
 import { KeyFeatures } from '../shadcn/blocks/KeyFeatures'
 import { FeaturesGrid } from '../shadcn/blocks/FeaturesGrid'
 import Intro from './intro'
-import { ProductHero } from '../shadcn/blocks/ProductHero'
 import OverlayBanner from './overlayBanner'
 import { CardGrid } from './content/CardGrid'
-import { Stats } from './product/Stats'
+import { Specifications } from './product/Specifications'
+import { ProductHero } from './hero/ProductHero'
+import { CustomerPhotographs } from './trustpilot/CustomerPhotographs'
+import { ReviewsCarousel } from './trustpilot/ReviewsCarousel'
+import { ImageHotspots } from './product/ImageHotspots'
 
 
-const Blocks = ({ blocks }: { blocks: Page['layout'] | Scooter['layout'] }) => {
+
+const Blocks = ({ blocks, product}: { blocks: Page['layout'] | Scooter['layout'], product: Scooter }) => {
   const blockComponents: any = {
     Hero: Hero231,
     Cta: Cta, 
@@ -41,17 +45,19 @@ const Blocks = ({ blocks }: { blocks: Page['layout'] | Scooter['layout'] }) => {
     CoverBanner: CoverBanner,
     FeatureColumns: FeatureColumns,
     FeatureAccordion: FeatureAccordions,
-    ProductHeroBlock: ProductHero,
+    ProductHero: ProductHero,
     ProductIntro: Intro,
     KeyFeatures: KeyFeatures,
     FeaturesGrid: FeaturesGrid,
     OverlayBanner: OverlayBanner,
     CardGrid: CardGrid,
-    Stats: Stats
+    SpecificationsBlock: Specifications,
+    CustomerPhotographs: CustomerPhotographs,
+    ReviewsCarousel: ReviewsCarousel,
+    ImageHotspots: ImageHotspots
   }
 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
-
   if (hasBlocks) {
     return (
       <Fragment>
@@ -60,7 +66,7 @@ const Blocks = ({ blocks }: { blocks: Page['layout'] | Scooter['layout'] }) => {
           if (blockType) {
             const Block = blockComponents[blockType]
             if (Block) {
-              return <Block {...block} key={block.id} />
+              return <Block {...block} key={block.id} product={product} />
             } else {
               console.log('Block type not supported')
             }

@@ -1,14 +1,15 @@
 /*
 Render all blocks components from payload 
 */
-
-import React, { Fragment } from 'react'
+'use client'
+import React, { Fragment, useEffect } from 'react'
 import { Page } from '@/payload-types'
 import { NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from '@/components/shadcn/ui/navigation-menu'
 import {CardLink} from '../components/CardLink';
 import {IconLink} from '../components/IconLink';
 import { GenericSubmenu } from '.';
 import { ChevronDown } from 'lucide-react';
+import { useNavContext } from '@/globals/context/navContext';
 
 type Props = {
  submenu: GenericSubmenu
@@ -18,9 +19,14 @@ type Props = {
 export default function GenericDropDown({submenu, label}: Props) {
 
     const { link, linkList} = submenu;
+    const { activeMenu, setNavWidth, navWidth } = useNavContext();
+        
+    useEffect(() => {
+        if(activeMenu == label) { setNavWidth('900px') }
+    },[activeMenu])
 
   return (
-        <NavigationMenuContent className="min-w-[900px] p-8">
+        <NavigationMenuContent className={`min-w-[${navWidth}}] p-8`}>
             <div className="flex justify-between gap-6">
                 <CardLink link={link}/>
                 <div className="w-3/5 max-w-[510px]">

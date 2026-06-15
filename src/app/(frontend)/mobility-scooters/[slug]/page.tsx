@@ -6,6 +6,7 @@ import type { Metadata } from 'next'
 import type { Scooter } from '@/payload-types'
 import { fetchScooters } from '@/lib/payload/fetchScooters'
 import { fetchScooter } from '@/lib/payload/fetchScooter'
+import Form from '@/components/forms'
 
 export async function generateStaticParams() {
   let scooters: Scooter[] | undefined = undefined
@@ -55,11 +56,11 @@ export default async function Page({ params }: Props) {
 
   const { layout } = scooter
 
-  console.log(layout);
 
   return (
     <div>
-      <Blocks blocks={layout} />
+      <Blocks blocks={layout} product={scooter} />
+      <Form />
     </div>
   )
 }

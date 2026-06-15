@@ -19,6 +19,19 @@ export const customIcons = {
       </defs>
     </svg>
   ),
+  CheckMark: ({ width = 15, height = 15, ...props }: CustomIconProps) => (
+   <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 15 15" fill="none">
+    <g clipPath="url(#clip0_674_186)">
+    <path d="M7.5 15C11.6475 15 15 11.6475 15 7.5C15 3.35253 11.6475 0 7.5 0C3.35253 0 0 3.35253 0 7.5C0 11.6475 3.35253 15 7.5 15Z" fill="#6B7280"/>
+    <path d="M4.16406 7.88076L6.18595 9.79896L10.8346 5.375" stroke="#FAFAFA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_674_186">
+    <rect width="15" height="15" fill="white"/>
+    </clipPath>
+    </defs>
+    </svg>
+  ),
 } satisfies Record<string, CustomIcon>;
 
 export type CustomIconName = keyof typeof customIcons;

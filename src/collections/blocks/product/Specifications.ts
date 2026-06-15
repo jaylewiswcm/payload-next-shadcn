@@ -1,12 +1,13 @@
 import { linkFields } from '@/components/fields/LinkField'
 import { Block } from 'payload'
 
-export const Stats: Block = {
-  slug: 'Stats', // required
-  interfaceName: 'Stats', // optional
+export const Specifications: Block = {
+  slug: 'SpecificationsBlock', // required
+  interfaceName: 'SpecificationsBlock', // optional
+  dbName: 'specsBlock',
   labels: {
-    singular: 'Stats',
-    plural: 'Stats',
+    singular: 'Specifications',
+    plural: 'Specifications',
   },
   fields: [
     {

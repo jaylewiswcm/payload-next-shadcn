@@ -4,7 +4,7 @@ import { Eye, Keyboard, Volume2 } from "lucide-react";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { cn } from "@/lib/utils";
 import { CoverBanner as CoverBannerTypes, Media } from "@/payload-types";
-import MediaImage from "@/components/custom/MediaImage";
+import MediaImage from "@/components/ui/MediaImage";
 
 type CoverBannerProps = CoverBannerTypes & {
   className?: string;
