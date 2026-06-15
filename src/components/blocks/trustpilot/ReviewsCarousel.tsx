@@ -184,8 +184,7 @@ function handlePointerMove(e: React.PointerEvent<HTMLDivElement>) {
             {data.map((item,index) => (
               <CarouselItem
                 key={item.id}
-                className="max-w-[320px] pl-[20px] lg:max-w-[360px]"
-                onClick={() => setActiveIndex(index)}
+                className="max-w-[320px] pl-[20px] lg:max-w-[360px]" 
               >
                 <a
                   href='#'

@@ -30,8 +30,12 @@ import { ReviewsCarousel } from './trustpilot/ReviewsCarousel'
 import { ImageHotspots } from './product/ImageHotspots'
 
 
+type Props = {
+  blocks: Page['layout'] | Scooter['layout']
+  product?: Scooter
+}
 
-const Blocks = ({ blocks, product}: { blocks: Page['layout'] | Scooter['layout'], product: Scooter }) => {
+const Blocks = ({ blocks, product}:Props) => {
   const blockComponents: any = {
     Hero: Hero231,
     Cta: Cta, 
